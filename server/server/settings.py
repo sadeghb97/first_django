@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'first_app',
+    'ps4games',
 ]
 
 MIDDLEWARE = [
