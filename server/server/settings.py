@@ -23,9 +23,11 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'o7nrqu4_$^xi%f&0l=tt^ge)dm8**e*qr5%7#2tnb6ks=h3-f!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -45,6 +47,10 @@ INSTALLED_APPS = [
     'profiles',
 ]
 
+RENDERER = ('rest_framework.renderers.JSONRenderer', )
+if DEBUG:
+    RENDERER += ('rest_framework.renderers.BrowsableAPIRenderers', )
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
@@ -60,7 +66,8 @@ REST_FRAMEWORK = {
         'rest_framework.filters.OrderingFilter',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-                                'PAGE_SIZE': 5
+                                'PAGE_SIZE': 5,
+    'DEFAULT_RENDERER_CLASSES': RENDERER
 }
 
 MIDDLEWARE = [
