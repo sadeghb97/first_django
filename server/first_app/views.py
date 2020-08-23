@@ -77,6 +77,9 @@ class DeepTracksViewSet (viewsets.ModelViewSet):
     http_method_names = ['post', 'put', 'get', 'delete']
     # serializer_class = TrackDeepSerializer --> yek method baraye an override mikonim
 
+    search_fields = ('title', )
+    ordering_fields = '__all__'
+
     def get_serializer_class(self):
         if self.request.method not in permissions.SAFE_METHODS:
             return TrackSimpleSerializer
