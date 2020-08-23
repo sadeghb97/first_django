@@ -12,7 +12,8 @@ def add_game(request):
         'name': request.data['name'],
         'release': request.data['release'],
         'metacritic': request.data['metacritic'],
-        'gptime': request.data['gptime']
+        'gptime': request.data['gptime'],
+        'image': request.data['image']
     }
 
     ser = serializers.PS4GameSerializer(data=data)
